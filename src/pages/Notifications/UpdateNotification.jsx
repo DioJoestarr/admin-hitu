@@ -226,7 +226,7 @@ const UpdateNotification = ({
     try {
       await axios.put(
         `http://18.140.66.234/api/v1/notifications?${facultyUrl}${notifyGCUrl}${classCodesUrl}type=${
-          typeSelected.value ? 0 : typeSelected.value
+          typeSelected.value === undefined ? 0 : typeSelected.value
         }&` +
           new URLSearchParams({
             content: draftToHtml(convertToRaw(editorState.getCurrentContent())),
