@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
-
+import axios from "axios"
 import { useDispatch, useSelector } from "react-redux";
 import {toast} from 'react-toastify'
 import "./Login.scss";
@@ -28,7 +28,7 @@ const Login = () => {
             username: username,
             password: password,
           },   
-        ).then((data) => {
+        ).then(({data}) => {
             localStorage.setItem("accessToken",JSON.stringify(data.accessToken) );
             history("/Teachers")
             window.location.reload();
