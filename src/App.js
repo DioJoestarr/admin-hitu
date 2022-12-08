@@ -23,7 +23,13 @@ const App = () => {
   const { setCurrentColor, setCurrentMode, currentMode, themeSettings } = useStateContext();
   
   const isAuthenticated = localStorage.getItem("accessToken")
-
+  useEffect(() => {
+   
+      if (location.protocol === 'https:') {
+        location.protocol = 'http:';
+      }
+    
+  }, []);
 
   useEffect(() => {
     const currentThemeColor = localStorage.getItem("colorMode");

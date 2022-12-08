@@ -27,8 +27,6 @@ const Login = () => {
           {
             username: username,
             password: password,
-          },{
-            "Referrer-Policy": "unsafe_url"
           }
         ).then(({data}) => {
             localStorage.setItem("accessToken",JSON.stringify(data.accessToken) );
