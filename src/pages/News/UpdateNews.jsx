@@ -298,6 +298,14 @@ const UpdateNews = ({
                         setOptionSelected(option);
                       }}
                       options={options}
+                      styles={{
+                        control: (baseStyles, state) => ({
+                          ...baseStyles,
+                          width: "349px", 
+                          minWidth:"349px", 
+                          maxWidth:"349px"
+                        }),
+                      }}
                     />
                   </div>
                 </div>

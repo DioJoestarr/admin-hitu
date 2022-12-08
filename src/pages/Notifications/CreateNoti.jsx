@@ -182,7 +182,7 @@ const CreateNotification = ({
 
     try {
       await axios.post(
-        `http://18.140.66.234/api/v1/notifications?${facultyUrl}${notifyGCUrl}${classCodesUrl}type=${typeSelected.value}&` +
+        `http://18.140.66.234/api/v1/notifications?${facultyUrl}${notifyGCUrl}${classCodesUrl}type=${typeSelected.value === undefined ? 0 : typeSelected.value}&` +
           new URLSearchParams({
             content: draftToHtml(convertToRaw(editorState.getCurrentContent())),
             shortDescription,
@@ -340,6 +340,14 @@ const CreateNotification = ({
                         setFacultyOptionSelected(option);
                       }}
                       options={facultyOptions}
+                      styles={{
+                        control: (baseStyles, state) => ({
+                          ...baseStyles,
+                          width: "349px", 
+                          minWidth:"349px", 
+                          maxWidth:"349px"
+                        }),
+                      }}
                     />
                   </div>
                 </div>
@@ -359,6 +367,14 @@ const CreateNotification = ({
                         setNotifyCationGroupCodeOptionSelected(option);
                       }}
                       options={notificationGroupCodeOptions}
+                      styles={{
+                        control: (baseStyles, state) => ({
+                          ...baseStyles,
+                          width: "349px", 
+                          minWidth:"349px", 
+                          maxWidth:"349px"
+                        }),
+                      }}
                     />
                   </div>
                   <div
@@ -377,6 +393,14 @@ const CreateNotification = ({
                         setClassesCodeOptionSelected(option);
                       }}
                       options={classesCodeOptions}
+                      styles={{
+                        control: (baseStyles, state) => ({
+                          ...baseStyles,
+                          width: "349px", 
+                          minWidth:"349px", 
+                          maxWidth:"349px"
+                        }),
+                      }}
                     />
                   </div>
                 </div>
@@ -396,6 +420,14 @@ const CreateNotification = ({
                         setTypeSelected(option);
                       }}
                       options={SGOptions}
+                      styles={{
+                        control: (baseStyles, state) => ({
+                          ...baseStyles,
+                          width: "349px", 
+                          minWidth:"349px", 
+                          maxWidth:"349px"
+                        }),
+                      }}
                     />
                   </div>
                 </div>
