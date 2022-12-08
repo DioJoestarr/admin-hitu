@@ -21,9 +21,6 @@ const EducationProgramAPI = {
   },
   update(params, formData) {
     return axiosClient.put("v1/education-program", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
       params,
     });
   },

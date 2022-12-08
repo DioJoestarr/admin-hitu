@@ -31,7 +31,7 @@ const Faculty = () => {
   const handleDelete = async (ids) => {
     try {
       await FacultyAPI.hiddenFaculty(ids);
-      setKeyFresh(old => old + 1)
+      setData((d) => d.filter((e) => e.id !== ids));
       toast.success("Xoá thành công");
     } catch (error) {
       toast.error("Xoá khoa thất bại");
@@ -96,7 +96,7 @@ const Faculty = () => {
                 setRowId(null);
               }}
             >
-              Tạo
+              Tạo khoa
             </button>
           </div>
         }

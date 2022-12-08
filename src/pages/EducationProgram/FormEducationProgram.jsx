@@ -24,20 +24,21 @@ const FormEducationProgram = ({ setView, id, code, view, setNewData }) => {
     id: null,
     code: "",
     name: "",
+    schoolYear: null,
+    faculty: null
   });
   const [listShoolYear, setListSchoolYear] = useState([]);
   const [listFaculty, setListFaculty] = useState([]);
   const [file, setFile] = useState(null);
   const [selectedFaculty, setSelectFaculty] = useState(null);
   const [selectedYear, setSelectedYear] = useState(null);
-
   useEffect(() => {
-    if (view && code) {
+    if (view==="UPDATE" && code) {
       EducationProgramAPI.getOne({ code }).then(({ data }) => {
         setData(data);
       });
     }
-  }, [code]);
+  }, [code,view]);
   useEffect(() => {
     SchoolYearAPI.getAll({ status: true }).then((response) => {
       const modifiedData = response.data.map((y) => {
@@ -50,12 +51,22 @@ const FormEducationProgram = ({ setView, id, code, view, setNewData }) => {
         return { value: f.code, label: f.name };
       });
       setListFaculty(modifiedData);
+
     });
   }, []);
+ 
+  useEffect(() => {
+    if(view === "UPDATE"){
+      if(listFaculty.length && listShoolYear.length && data.faculty && data.schoolYear){
+        setSelectFaculty(listFaculty.find((k) => k.value === data.faculty.code));
+        setSelectedYear(listShoolYear.find((k) => k.value === data.schoolYear.code))
+      }
+    }
+  }, [data, listFaculty, listShoolYear, view])
+
   const handleAdd = async (e) => {
     try {
       const formData = new FormData();
-
       const objRequest = {
         code: data.code,
         name: data.name,
@@ -66,7 +77,7 @@ const FormEducationProgram = ({ setView, id, code, view, setNewData }) => {
         return;
       }
       formData.append("file", file);
-      const result = await EducationProgramAPI.create(objRequest, formData);
+      const result = await EducationProgramAPI.create(objRequest, file ? formData : null);
       setNewData((d) => {
         return [...d, result.data];
       });
@@ -84,14 +95,16 @@ const FormEducationProgram = ({ setView, id, code, view, setNewData }) => {
         code: data.code,
         name: data.name,
         id: data.id,
+        facultyCode: selectedFaculty.value,
+        schoolYearCode: selectedYear.value,
       };
       if (!validData(objRequest)) {
         return;
       }
-      const result = await EducationProgramAPI.update(objRequest, formData);
+      const result = await EducationProgramAPI.update(objRequest,file ? formData : null);
       setNewData((d) => {
         return d.map((khoa) => {
-          if (result.data.code === khoa.code) {
+          if (result.data.id === khoa.id) {
             return result.data;
           }
           return khoa;
@@ -172,12 +185,13 @@ const FormEducationProgram = ({ setView, id, code, view, setNewData }) => {
                   />
                 </div>
               </div>
-              {view !== "UPDATE" && (
+              
                 <div className={s.row}>
                   <div className={s.field}>
                     <label htmlFor="">Khoa</label>
                     <Select
                       className={s.select}
+                      value={selectedFaculty}
                       onChange={(option) => {
                         setSelectFaculty(option);
                       }}
@@ -188,13 +202,13 @@ const FormEducationProgram = ({ setView, id, code, view, setNewData }) => {
                     <label htmlFor="">Năm học</label>
                     <Select
                       className={s.select}
-                      defaultValue={selectedYear?.value}
+                      value={selectedYear}
                       onChange={(option) => setSelectedYear(option)}
                       options={listShoolYear}
                     />
                   </div>
                 </div>
-              )}
+              
               <div className={s.row}>
                 <div className={s.field}>
                   <label htmlFor="">File excel các môn học</label>
