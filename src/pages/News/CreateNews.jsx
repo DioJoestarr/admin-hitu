@@ -268,6 +268,10 @@ const CreateNews = ({ createShow, setCreateShow, keyFresh, setKeyFresh }) => {
                           minWidth:"349px", 
                           maxWidth:"349px"
                         }),
+                        menu: (baseStyles, state) => ({
+                          ...baseStyles,
+                          zIndex:10000
+                        })
                       }}
                     />
                   </div>

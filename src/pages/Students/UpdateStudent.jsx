@@ -50,6 +50,15 @@ const UpdateStudent = ({
       remark,
       userId,
     });
+    const config = {
+      headers: {
+        Authorization: `Bearer ${JSON.parse(
+          localStorage.getItem("accessToken")
+        )}`,
+      },
+    };
+    const {data} = await axios.get(`http://18.140.66.234/api/v1/classes?code=${classCode}`, config)
+    setClassCodeSelected(data.code)
   };
 
   const getClassCode = async () => {
@@ -107,7 +116,7 @@ const UpdateStudent = ({
       toast.error("Vui lòng chọn Lớp!");
       return 0;
     }
-    if (obj.password?.length <= 7) {
+    if (obj.password?.length <= 7 && obj.password?.length >= 1) {
       toast.error("Mật khẩu không được bé hơn 8 kí tự!");
       return 0;
     }
@@ -317,9 +326,8 @@ const UpdateStudent = ({
                       className="mb-[12px] px-[12px] w-[348px] h-[40px] input-hover font-[14px] rounded-[4px] border-[1px] border-solid border-[rgba(0,0,0,0.4)]"
                       name=""
                     >
-                      <option value="">Chọn lớp</option>
                       {classCode?.map((item, i) => (
-                        <option key={i} value={item.code}>
+                        <option selected={item.code === classCodeSelected  ? true : false} key={i} value={item.code}>
                           {item.name}
                         </option>
                       ))}
@@ -368,7 +376,7 @@ const UpdateStudent = ({
                       className="font-[400] text-[11px]"
                       htmlFor="create_6"
                     >
-                      VD: 12345678
+                      Mặc định là mật khẩu cũ
                     </label>
                   </div>
                   <div

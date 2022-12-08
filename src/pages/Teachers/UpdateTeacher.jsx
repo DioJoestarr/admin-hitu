@@ -76,6 +76,8 @@ const UpdateTeacher = ({
       roleCodes,
       userId,
     });
+    const {data} = await axios.get(`http://18.140.66.234/api/v1/faculties?code=${facultyCode}`)
+    setFacultySelected(data.code)
   };
 
   useEffect(() => {
@@ -110,7 +112,7 @@ const UpdateTeacher = ({
       toast.error("Vui lòng nhập Email hợp lệ!");
       return 0;
     }
-    if (obj.password.length <= 7) {
+    if (obj.password?.length <= 7 && obj.password?.length >= 1) {
       toast.error("Mật khẩu không được bé hơn 8 kí tự!");
       return 0;
     }
@@ -301,9 +303,8 @@ const UpdateTeacher = ({
                       className="mb-[12px] px-[12px] w-[348px] h-[40px] input-hover font-[14px] rounded-[4px] border-[1px] border-solid border-[rgba(0,0,0,0.4)]"
                       name=""
                     >
-                      <option value="">Chọn khoa</option>
                       {faculty.map((item, i) => (
-                        <option key={i} value={item.code}>
+                        <option selected={item.code === facultySelected  ? true : false} key={i} value={item.code}>
                           {item.name}
                         </option>
                       ))}
@@ -320,7 +321,7 @@ const UpdateTeacher = ({
                   id="first_4"
                 /> */}
                     <label className="font-[400] text-[11px]" htmlFor="first_4">
-                      Mặc định:Giảng Viên
+                      Chọn Khoa
                     </label>
                   </div>
                 </div>
@@ -357,7 +358,7 @@ const UpdateTeacher = ({
                       id="first_6"
                     />
                     <label className="font-[400] text-[11px]" htmlFor="first_6">
-                      VD: 12345678
+                      Mặc định là mật khẩu cũ
                     </label>
                   </div>
                   <div
