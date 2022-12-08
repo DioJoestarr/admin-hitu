@@ -8,7 +8,8 @@ const axiosClient = axios.create({
     "Access-Control-Allow-Headers": "*",
     "Access-Control-Allow-Credentials": "true",
     "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
+    "Referrer-Policy": "unsafe_url",
     Authorization: `Bearer ${JSON.parse(localStorage.getItem("accessToken"))}`,
-  },
+  }
 });
 export default axiosClient;
