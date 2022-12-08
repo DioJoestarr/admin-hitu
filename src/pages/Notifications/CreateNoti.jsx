@@ -340,6 +340,14 @@ const CreateNotification = ({
                         setFacultyOptionSelected(option);
                       }}
                       options={facultyOptions}
+                      styles={{
+                        control: (baseStyles, state) => ({
+                          ...baseStyles,
+                          width: "349px", 
+                          minWidth:"349px", 
+                          maxWidth:"349px"
+                        }),
+                      }}
                     />
                   </div>
                 </div>
@@ -359,6 +367,14 @@ const CreateNotification = ({
                         setNotifyCationGroupCodeOptionSelected(option);
                       }}
                       options={notificationGroupCodeOptions}
+                      styles={{
+                        control: (baseStyles, state) => ({
+                          ...baseStyles,
+                          width: "349px", 
+                          minWidth:"349px", 
+                          maxWidth:"349px"
+                        }),
+                      }}
                     />
                   </div>
                   <div
@@ -377,6 +393,14 @@ const CreateNotification = ({
                         setClassesCodeOptionSelected(option);
                       }}
                       options={classesCodeOptions}
+                      styles={{
+                        control: (baseStyles, state) => ({
+                          ...baseStyles,
+                          width: "349px", 
+                          minWidth:"349px", 
+                          maxWidth:"349px"
+                        }),
+                      }}
                     />
                   </div>
                 </div>
@@ -396,6 +420,14 @@ const CreateNotification = ({
                         setTypeSelected(option);
                       }}
                       options={SGOptions}
+                      styles={{
+                        control: (baseStyles, state) => ({
+                          ...baseStyles,
+                          width: "349px", 
+                          minWidth:"349px", 
+                          maxWidth:"349px"
+                        }),
+                      }}
                     />
                   </div>
                 </div>
