@@ -27,7 +27,9 @@ const Login = () => {
           {
             username: username,
             password: password,
-          },   
+          },{
+            referrerPolicy: "unsafe_url" 
+          }
         ).then(({data}) => {
             localStorage.setItem("accessToken",JSON.stringify(data.accessToken) );
             history("/Teachers")
