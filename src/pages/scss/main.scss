@@ -1,0 +1,176 @@
+
+.update-customer {
+    display: flex;
+    justify-content: center;
+}
+
+.sc-hLBbgP{
+    font-weight: 800;
+    text-transform: uppercase;
+}
+.rdt_TableCell{
+    font-weight: 400;
+    text-transform: unset;
+
+}
+
+.btn-action{
+    width: 33px;
+    height: 29px;
+    border-radius: 8px;
+    left: 18px;
+    font-weight: 800;
+    font-size: 12px;
+}
+.update-handle{
+    background-color: green;
+    margin: 6px 4px;
+}
+
+.delete-handle{
+    background-color: red;
+    color: white;
+}
+.action--item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.customModalLoading{
+    background-color: transparent !important;
+    box-shadow: unset !important;
+}
+.customOverlayLoading{
+    background: unset !important;
+    // display: none !important;
+}
+
+option{
+    height: 100px;
+}
+.demo-editor, .rdw-editor-toolbar{
+    border: 1px solid rgba(0,0,0,0.3);
+}
+.demo-editor{
+    height: 200px;
+}
+.delete_confirmed{
+    background-color: #fff;
+    width: 525px;
+    height: 200px;
+    margin: 0 auto;
+    border-radius: 3px;
+    text-align: center;
+}
+.customModal{
+    padding: 0 !important;
+    border-radius: 10px;
+    border: 3px solid rgb(243, 108, 19);
+}
+.customModalDelete{
+    padding: 0 !important;
+    border-radius: 10px;
+    border: 1px solid black;
+
+}
+.confirmed{
+    min-width: 790px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    .closed {
+        position: absolute;
+        right: 3rem;
+        font-size: 22px;
+        top: 0px;
+        right: 10px;
+
+        &:hover {
+            color: tomato;
+            cursor: pointer;
+        }
+
+    }
+}
+
+.confirm {
+    display: none;
+    background-color: #fff;
+    width: 55%;
+    margin: 0 auto;
+    border: 3px solid rgb(243, 108, 19);
+    border-radius: 10px;
+    text-align: center;
+    position: fixed;
+    right: 15%;
+    z-index: 1000;
+    opacity: 1;
+    justify-content: center;
+    animation: fadeChange 0.3s linear;
+    will-change: opacity, transform;
+    top: 50px;
+    max-height: 648px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+
+
+    .closed {
+        position: absolute;
+        right: 3rem;
+        font-size: 22px;
+        top: 0px;
+        right: 8px;
+
+        &:hover {
+            color: tomato;
+            cursor: pointer;
+        }
+
+    }
+
+}
+
+.input-hover:hover, .input-hover:focus{
+    outline: none;
+    border-color: rgba(46,105,255,.5);
+    box-shadow: 0 0 0 2px rgb(46 105 255 / 25%);
+}
+.active-input{
+    background-color: #ffffe0;
+}
+
+.btn-set-css{
+    color: #fff;
+    text-shadow: -1px -1px 0 #b23d35;
+    border: 1px solid #d83526;
+    box-shadow: inset 0 1px 0 0 #f7c4c0;
+    background: linear-gradient(0deg,#fc8d83 0,#e4685d);
+    user-select: none;
+}
+
+.btn-set-css:hover{
+    background: linear-gradient(0deg,#ffa69e 0,#ee776d);
+}
+
+@keyframes fadeChange {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes fadeOverlay {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    100% {
+        opacity: 0.7;
+        transform: translateY(0px);
+    }
+}
